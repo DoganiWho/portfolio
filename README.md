@@ -1,177 +1,360 @@
-# Configuring a Repl
+# Simplefolio ⚡️ [![GitHub](https://img.shields.io/github/license/cobiwave/simplefolio?color=blue)](https://github.com/cobiwave/simplefolio/blob/master/LICENSE.md) ![GitHub stars](https://img.shields.io/github/stars/cobiwave/simplefolio) ![GitHub forks](https://img.shields.io/github/forks/cobiwave/simplefolio)
 
-Every new repl comes with a `.replit` and a `replit.nix` file that let you configure your repl to do just about anything in any language!
+## A minimal portfolio template for Developers!
 
-### `replit.nix`
+<h2 align="center">
+  <img src="https://github.com/cobiwave/gatsby-simplefolio/blob/master/examples/example.gif" alt="Simplefolio" width="600px" />
+  <br>
+</h2>
 
-Every new repl is now a Nix repl, which means you can install any package available on Nix, and support any number of languages in a single repl. You can search for a list of available packages [here](https://search.nixos.org/packages).
+## Features
 
-The `replit.nix` file should look something like the example below. The `deps` array specifies which Nix packages you would like to be available in your environment. 
+⚡️ Modern UI Design + Reveal Animations\
+⚡️ One Page Layout\
+⚡️ Styled with Bootstrap v4.3 + Custom SCSS\
+⚡️ Fully Responsive\
+⚡️ Valid HTML5 & CSS3\
+⚡️ Optimized with Parcel\
+⚡️ Well organized documentation
 
-```nix
-{ pkgs }: {
-    deps = [
-        pkgs.cowsay
-    ];
-}
+To view the demo: **[click here](https://the-simplefolio.netlify.app/)**
+
+---
+
+## Why do you need a portfolio? ☝️
+
+- Professional way to showcase your work
+- Increases your visibility and online presence
+- Shows you’re more than just a resume
+
+## Getting Started 🚀
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites 📋
+
+You'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [NPM](http://npmjs.com)) installed on your computer.
+
 ```
-### Learn More About Nix
-
-If you'd like to learn more about Nix, here are some great resources:
-
-#### Written Guides
-- [Getting started with Nix](https://docs.replit.com/programming-ide/nix-on-replit) — Our own getting started guide
-- [Building with Nix on Replit](https://docs.replit.com/tutorials/python/build-with-nix) — Deploy a production web stack on Replit with Nix
-- [Nix Pills](https://nixos.org/guides/nix-pills/) — Guided introduction to Nix
-- [Nix Package Manager Guide](https://nixos.org/manual/nix/stable/) — A comprehensive guide of the Nix Package Manager
-- [A tour of Nix](https://nixcloud.io/tour) — Learn the nix language itself
-
-#### Video Guides
-- [Nixology](https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs) — A series of videos introducing Nix in a practical way
-- [Taking the Nix pill](https://www.youtube.com/watch?v=QwLWIy2KleE) — An introduction to what Nix is, how it works, and a walkthrough of publishing several new languages to Replit within an hour.
-- [Nix: A Deep Dive](https://www.youtube.com/watch?v=TsZte_9GfPE) — A deep dive on Nix: what Nix is, why you should use it, and how it works.
-
-
-### `.replit`
-
-The `.replit` file allows you to configure many options for your repl, most basic of which is the `run` command.
-
-Check out how to use the `.replit` file to configure a repl to enable [Clojure](https://clojure.org):
-
-<iframe width="640" height="400" style="margin-bottom: 10px;" src="https://www.loom.com/embed/cbe1f74399c546c38e0c1871893816c5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
-`.replit` files follow the [toml configuration format](https://learnxinyminutes.com/docs/toml/) and look something like this:
-
-```toml
-# The command that is executed when the run button is clicked.
-run = ["cargo", "run"]
-
-# The default file opened in the editor.
-entrypoint = "src/main.rs"
-
-# Setting environment variables
-[env]
-FOO="foo"
-
-# Packager configuration for the Universal Package Manager
-# See https://github.com/replit/upm for supported languages.
-[packager]
-language = "rust"
-
-  [packager.features]
-  # Enables the package search sidebar
-  packageSearch = true
-  # Enabled package guessing
-  guessImports = false
-
-# Per language configuration: language.<lang name> 
-[languages.rust]
-# The glob pattern to match files for this programming language
-pattern = "**/*.rs"
-
-    # LSP configuration for code intelligence
-    [languages.rust.languageServer]
-    start = ["rust-analyzer"]
+node@v16.4.2 or higher
+npm@7.18.1 or higher
+git@2.30.1 or higher
 ```
 
-In the code above, the strings in the array assigned to `run` are executed in order in the shell whenever you hit the "Run" button. 
+Also, you can use [Yarn](https://yarnpkg.com/) instead of NPM ☝️
 
-The `language` configuration option helps the IDE understand how to provide features like [packaging](https://blog.replit.com/upm) and [code intelligence](https://blog.replit.com/intel).
+```
+yarn@v1.22.10 or higher
+```
 
-And the `[languages.rust]` `pattern` option is configured so that all files ending with `.rs` are treated as Rust files. The name is user-defined and doesn't have any special meaning, we could have used `[languages.rs]` instead.
+---
 
-We can now set up a language server specifically for Rust. Which is what we do with the next configuration option: `[languages.rust.languageServer]`. [Language servers](https://microsoft.github.io/language-server-protocol/#:~:text=A%20Language%20Server%20is%20meant,servers%20and%20development%20tools%20communicate.) add smart features to your editor like code intelligence, go-to-definition, and documentation on hover.
+## How To Use 🔧
 
-Since repls are fully configurable, you're not limited to just one language. For example, you could install Clojure and its language server using `replit.nix`, add a `[languages.clojure]` configuration option to the above `.replit` file that matched all Clojure files and have code intelligence enabled for both languages in the same repl.
+From your command line, first clone Simplefolio:
 
-### `.replit` reference
+```bash
+# Clone the repository
+$ git clone https://github.com/cobiwave/simplefolio
 
-A `Command` can either be a string or a list of strings. If the `Command` is a string (`"node index.js"`), it will be executed via `sh -c "<Command>"`. If the Command is a list of strings (`["node", "index.js"]`), it will be directly executed with the list of strings passed as arguments. When possible, it is preferred to pass a list of strings.
+# Move into the repository
+$ cd simplefolio
 
-- `run`
-  - **Type:** `Command`
-  - **Description:** The command to run the repl.
-- `entrypoint`
-  - **Type:**  `string`
-  - **Description:** The name of the main file including the extension. This is the file that will be run, and shown by default when opening the editor.
-- `onBoot`
-  - **Type:** `Command`
-  - **Description:** The command that executes after your repl has booted.
-- `compile`
-  - **Type:** `Command`
-  - **Description:** The shell command to compile the repl before the `run` command. Only for compiled languages like C, C++, and Java.
-- `audio`
-  - **Type:** `boolean`
-  - **Description:** Enables [system-wide audio](https://docs.replit.com/misc/playing-audio-replit) for the repl when configured to `true`.
-- `language`
-  - **Type:** `string`
-  - **Description:** Reserved. During a GitHub import, this tells the workspace which language should be used when creating the repl. For new repls, this option will always be Nix, so this field should generally not be touched.
-- `[env]`
-  - **Description:** Set environment variables. Don't put secrets here—use the Secrets tab in the left sidebar.
-  - **Example:** `VIRTUAL_ENV = "/home/runner/${REPL_SLUG}/venv"`
-- `interpreter`
-  - **Description:** Specifies the interpreter, which should be a compliant [prybar binary](https://github.com/replit/prybar).
-  - `command`
-    - **Type:** `[string]`
-    - **Description:** This is the command that will be run to start the interpreter. It has higher precedence than the `run` command (i.e. `interpreter` command will run instead of the `run` command).
-  - `prompt`
-    - **Type:** `[byte]`
-    - **Description:** This is the prompt used to detect running state, if unspecified it defaults to `[0xEE, 0xA7]`.
-- `[unitTest]`
-  - Enables unit testing to the repl.
-  - `language`
-      - **Type:** `string`
-      - **Description:** The language you want the unit tests to run. Supported strings: `java`, `python`, and `nodejs`.
-- `[packager]`
-  - **Description:** Package management configuration. Learn more about installing packages [here](https://docs.replit.com/repls/packages/#DirectImports).
-  - `afterInstall`
-    - **Type:** `Command`
-    - **Description:** The command that is executed after a new package is installed.
-  - `ignoredPaths`
-    - **Type:** `[string]`
-    - **Description:** List of paths to ignore while attempting to guess packages.
-  - `ignoredPackages`
-    - **Type:** `[string]`
-    - **Description:** List of modules to never attempt to guess a package for, when installing packages.
-  - `language`
-    - **Type:** `string`
-    - **Description:** Specifies the language to use for package operations. See available languages in the [Universal Package Manager](https://github.com/replit/upm) repository.
-  - `[packager.features]`
-    - **Description:** UPM features that are supported by the specified languages.
-      - `packageSearch`
-        - **Type:** Boolean
-        - **Description:** When set to `true`, enables a package search panel in the sidebar.
-      - `guessImports`
-        - **Type:** Boolean
-        - **Description:** When set to `true`, UPM will attempt to guess which packages need to be installed prior to running the repl.
-- `[languages.<language name>]`
-  - **Description:** Per-language configuration. The language name has no special meaning other than to allow multiple languages to be configured at once.
-  - `pattern`
-    - **Type:** `string`
-    - **Description:** A [glob](https://en.wikipedia.org/wiki/Glob_(programming)) used to identify which files belong to this language configuration (`**/*.js`)
-  - `syntax`
-    - **Type:** `string`
-    - **Description:** The language to use for syntax highlighting.
-  - `[languages.<language name>.languageServer]`
-    - **Description:** Configuration for setting up [LSP](https://microsoft.github.io/language-server-protocol/) for this language. This allows for code intelligence (autocomplete, underlined errors, etc...).
-    - `start`
-      - **Type:** `Command`
-      - **Description:** The command used to start the LSP server for the specified language.
-- `[nix]`
-  - **Description:** Where you specify a [Nix channel](https://nixos.wiki/wiki/Nix_channels).
-  - `channel`
-    - **Type:** `string`
-    - **Description:** A nix channel id.
-- `[debugger]`
-  - **Description:** Advanced users only. See field types & docstrings [here](https://gist.github.com/Bardia95/98987c69c6970b1bb0698b863e2a84de#file-dot-replit-debugger-config-go), and in the advanced section below.
+# Remove the current origin repository
+$ git remote remove origin
+```
 
-### Example configurations
-#### Beginner
-##### [LaTeX](https://replit.com/@ZachAtReplit/LaTeX?v=1#.replit)
-##### [Clojure](https://replit.com/@replit/Clojure?v=1#.replit)
-#### Advanced
-##### [Python](https://replit.com/@replit/Python?v=1)
-##### [HTML, CSS, JS](https://replit.com/@replit/HTML-CSS-JS?v=1#.replit)
-##### [Java](https://replit.com/@replit/Java-Beta?v=1#.replit)
-##### [Node.js](https://replit.com/@replit/Nodejs?v=1#.replit)
-##### [C++](https://replit.com/@replit/CPlusPlus?v=1)
+After that, you can install the dependencies either using NPM or Yarn.
+
+Using NPM: Simply run the below commands.
+
+```bash
+# 2022 Update - Fix Dependencies
+$ npm audit fix
+$ npm i @parcel/transformer-sass
+
+# Install dependencies
+$ npm install
+
+# Start the development server
+$ npm start
+```
+
+Using Yarn: Be aware of that you'll need to delete the `package-lock.json` file before executing the below commands.
+
+```bash
+# Install dependencies
+$ yarn
+
+# Start the development server
+$ yarn start
+```
+
+**NOTE**:
+If your run into issues installing the dependencies with NPM, use this below command:
+
+```bash
+# Install dependencies with all permissions
+$ sudo npm install --unsafe-perm=true --allow-root
+```
+
+Once your server has started, go to this url `http://localhost:1234/` to see the portfolio locally. It should look like the below screenshot.
+
+<h2 align="center">
+  <img src="https://github.com/cobiwave/gatsby-simplefolio/blob/master/examples/example.png" alt="Simplefolio" width="100%">
+</h2>
+
+---
+
+## Template Instructions:
+
+### Step 1 - STRUCTURE
+
+Go to `/src/index.html` and put your information, there are 5 sections:
+
+### (1) Hero Section
+
+- On `.hero-title`, put your custom portfolio title.
+- On `.hero-cta`, put your custom button label.
+
+```html
+<!-- **** Hero Section **** -->
+<section id="hero" class="jumbotron">
+  <div class="container">
+    <h1 class="hero-title load-hidden">
+      Hi, my name is <span class="text-color-main">Your Name</span>
+      <br />
+      I'm the Unknown Developer.
+    </h1>
+    <p class="hero-cta load-hidden">
+      <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about">
+        Know more
+      </a>
+    </p>
+  </div>
+</section>
+<!-- /END Hero Section -->
+```
+
+### (2) About Section
+
+- On `<img>` tag, fill the `src` property with your profile picture path, your picture must be located inside `/src/assets/` folder.
+- On `<p>` tag with class name `.about-wrapper__info-text`, include information about you, I recommend to put 2 paragraphs in order to work well and a maximum of 3 paragraphs.
+- On last `<a>` tag, include your CV (.pdf) path on `href` property, your resume CV must be located inside `/src/assets/` folder.
+
+```html
+<!-- **** About Section **** -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title load-hidden">About me</h2>
+    <div class="row about-wrapper">
+      <div class="col-md-6 col-sm-12">
+        <div class="about-wrapper__image load-hidden">
+          <img
+            alt="Profile Image"
+            class="img-fluid rounded shadow-lg"
+            height="auto"
+            width="300px"
+            src="assets/profile.jpg"
+            alt="Profile Image"
+          />
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="about-wrapper__info load-hidden">
+          <p class="about-wrapper__info-text">
+            This is where you can describe about yourself. The more you describe
+            about yourself, the more chances you can!
+          </p>
+          <p class="about-wrapper__info-text">
+            Extra Information about you! like hobbies and your goals.
+          </p>
+          <span class="d-flex mt-3">
+            <a
+              rel="noreferrer"
+              target="_blank"
+              class="cta-btn cta-btn--resume"
+              href="assets/resume.pdf"
+            >
+              View Resume
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /END About Section -->
+```
+
+### (3) Projects Section
+
+- Each project lives inside a `row`.
+- On `<h3>` tag with class name `.project-wrapper__text-title`, include your project title.
+- On `<p>` tag with `loremp ipsum` text, include your project description.
+- On first `<a>` tag, put your project url on `href` property.
+- On second `<a>` tag, put your project repository url on `href` property.
+
+---
+
+- Inside `<div>` tag with class name `.project-wrapper__image`, put your project image url on the `src` of the `<img>` and put again your project url in the `href` property of the `<a>` tag.
+- Recommended size for project image (1366 x 767), your project image must be located inside `/src/assets/` folder.
+
+```html
+<!-- **** Projects Section **** -->
+<section id="projects">
+  ...
+  <!-- Notice: each .row is a project -->
+  <div class="row">
+    <div class="col-lg-4 col-sm-12">
+      <div class="project-wrapper__text load-hidden">
+        <h3 class="project-wrapper__text-title">Project Title</h3>
+        <div>
+          <p class="mb-4">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi
+            neque, ipsa animi maiores repellendus distinctio aperiam earum dolor
+            voluptatum consequatur blanditiis inventore debitis fuga numquam
+            voluptate ex architecto itaque molestiae.
+          </p>
+        </div>
+        <a
+          rel="noreferrer"
+          target="_blank"
+          class="cta-btn cta-btn--hero"
+          href="#!"
+        >
+          See Live
+        </a>
+        <a
+          rel="noreferrer"
+          target="_blank"
+          class="cta-btn text-color-main"
+          href="#!"
+        >
+          Source Code
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-8 col-sm-12">
+      <div class="project-wrapper__image load-hidden">
+        <a rel="noreferrer" href="#!" target="_blank">
+          <div
+            data-tilt
+            data-tilt-max="4"
+            data-tilt-glare="true"
+            data-tilt-max-glare="0.5"
+            class="thumbnail rounded js-tilt"
+          >
+            <img
+              alt="Project Image"
+              class="img-fluid"
+              src="assets/project.jpg"
+            />
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- /END Project -->
+  ...
+</section>
+```
+
+### (4) Contact Section
+
+- On `<p>` tag with class name `.contact-wrapper__text`, include some custom call-to-action message.
+- On `<a>` tag, put your email address on `href` property.
+
+```html
+<!-- **** Contact Section **** -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-wrapper load-hidden">
+      <p class="contact-wrapper__text">[Put your call to action here]</p>
+      <a
+        rel="noreferrer"
+        target="_blank"
+        class="cta-btn cta-btn--resume"
+        href="mailto:example@email.com"
+        >Call to Action</a
+      >
+    </div>
+  </div>
+</section>
+<!-- /END Contact Section -->
+```
+
+### (5) Footer Section
+
+- Put your Social Media URL on each `href` attribute of the `<a>` tags.
+- If you an additional Social Media account different than Twitter, Linkedin or GitHub, then go to [Font Awesome Icons](https://fontawesome.com/v4.7.0/icons/) and search for the icon's class name you are looking.
+- You can delete or add as many `<a>` tags your want.
+
+```html
+<footer class="footer navbar-static-bottom">
+  ...
+  <div class="social-links">
+    <a href="#!" target="_blank">
+      <i class="fa fa-twitter fa-inverse"></i>
+    </a>
+    <a href="#!" target="_blank">
+      <i class="fa fa-linkedin fa-inverse"></i>
+    </a>
+    <a href="#!" target="_blank">
+      <i class="fa fa-github fa-inverse"></i>
+    </a>
+  </div>
+  ...
+</footer>
+```
+
+### Step 2 - STYLES
+
+Change the color theme of the website - (choose 2 colors to create a gradient)
+
+Go to `/src/sass/abstracts/_variables.scss` and only change the values for this variables `$main-color` and `$secondary-color` with your prefered HEX color.
+If you want to get some gradients inspiration I highly recommend you to check this website [UI Gradient](https://uigradients.com/#BrightVault)
+
+```scss
+// Default values
+$main-color: #02aab0;
+$secondary-color: #00cdac;
+```
+
+---
+
+## Deployment 📦
+
+Once you finish your setup. You need to put your website online!
+
+I highly recommend to use [Netlify](https://netlify.com) because it is super easy.
+
+## Others versions 👥
+
+[Gatsby Simplefolio](https://github.com/cobiwave/gatsby-simplefolio) by [Jacobo Martinez](https://github.com/cobiwave)\
+[Ember.js Simplefolio](https://github.com/sernadesigns/simplefolio-ember) by [Michael Serna](https://github.com/sernadesigns)
+
+## Technologies used 🛠️
+
+- [Parcel](https://parceljs.org/) - Bundler
+- [Bootstrap 4](https://getbootstrap.com/docs/4.3/getting-started/introduction/) - Frontend component library
+- [Sass](https://sass-lang.com/documentation) - CSS extension language
+- [ScrollReveal.js](https://scrollrevealjs.org/) - JavaScript library
+- [Tilt.js](https://gijsroge.github.io/tilt.js/) - JavaScript tiny parallax library
+
+## Authors
+
+- **Jacobo Martinez** - [https://github.com/cobiwave](https://github.com/cobiwave)
+
+## Status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3a029bfd-575c-41e5-8249-c864d482c2e5/deploy-status)](https://app.netlify.com/sites/the-simplefolio/deploys)
+
+## License 📄
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments 🎁
+
+I was motivated to create this project because I wanted to contribute on something useful for the dev community, thanks to [ZTM Community](https://github.com/zero-to-mastery) and [Andrei](https://github.com/aneagoie)
